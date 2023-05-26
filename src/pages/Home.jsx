@@ -3,16 +3,26 @@ import { useState } from "react";
 import "./style.css";
 
 const Home = () => {
-  const [inputValue, setInputValue] = useState("");
+  const initialValue = {
+    value_text: "",
+    nama_lengkap: "",
+  };
+
+  const [inputValue, setInputValue] = useState(initialValue);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Reset nilai input
-    setInputValue("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleChange(e);
     setIsLoading(true);
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
+  console.table(inputValue);
 
   return (
     <div className="Home">
@@ -22,7 +32,7 @@ const Home = () => {
           <QRCode
             size={256}
             // style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-            value={inputValue}
+            value={inputValue.value_text}
             viewBox={`0 0 256 256`}
           />
         ) : (
@@ -33,10 +43,11 @@ const Home = () => {
         <label>Masukan Link Text / URL Website Anda </label>
         <input
           type="text"
+          name="value_text"
           placeholder="Text atau Link url "
-          required="required"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          //  required="required"
+          value={inputValue.value_text}
+          onChange={(e) => handleChange(e)}
         />
         {isLoading ? (
           <button style={{ display: "none" }}>Clear</button>
