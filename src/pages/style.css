@@ -1,0 +1,33 @@
+.qrcode {
+  min-height: 250px;
+  margin-bottom: 12px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(97, 104, 116, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding-left: 12px;
+  border-radius: 8px;
+}
